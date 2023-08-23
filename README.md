@@ -5,7 +5,7 @@ Lambda Architecture implementation using Kafka for stream ingestion, Spark for b
 # Batch Processing
 ![image](https://github.com/lephuong7870/CreditCardTransactionsFraud/assets/92160581/6210d66c-04f1-41a7-b1c6-1b048864d4f8)
 
-batch.py
+
 
 # Run Batch
 docker exec spark-master /spark/bin/spark-submit --packages "com.datastax.spark:spark-cassandra-connector_2.12:3.0.1,com.datastax.cassandra:cassandra-driver-core:4.0.0" /batch/batch.py
@@ -14,7 +14,7 @@ docker exec spark-master /spark/bin/spark-submit --packages "com.datastax.spark:
 # Streaming Processing
 ![image](https://github.com/lephuong7870/CreditCardTransactionsFraud/assets/92160581/ce0295d8-85bc-431a-98e4-562027f66368)
 
-kafka_consumer.py
+
 
 # Run Stream 
 ## Create topic in Kafka
