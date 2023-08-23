@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} ABOUT {% endblock %}
+
+{% block heading %}
+<center> Customer Detail </center>
+   
+{% endblock %}
+
+{% block content %}
+<p>
+   <h1> Detail Customer Information  </h1> 
+</p>
+{% for customer  in customer %}
+<div style="float: left; margin: 50px;  ;">
+
+    <p><b>Customer ID: &nbsp;</b>  {{ customer.cc_num }}</p>
+    <p><b>FirstName: &nbsp;</b> {{ customer.first }}</p>
+    <p><b>LastName: &nbsp;</b> {{ customer.last }}</p>
+    <p><b>Gender: &nbsp;</b> {{ customer.gender }}</p>
+    <p><b>Street: &nbsp;</b> {{ customer.street }}</p>
+    <p><b>City: &nbsp;</b> {{ customer.city }}</p>
+    <p><b>State: &nbsp;</b> {{ customer.state }}</p>
+    <p><b>Job: &nbsp;</b> {{ customer.job }}</p>
+
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+#title {
+    padding: 10px;
+    color: #464646;
+}
+
+body {
+    background-color: whitesmoke;
+}
+table {
+    width: 10%;
+    text-align: center;
+}
+th, td {
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+}

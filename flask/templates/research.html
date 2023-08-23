@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset='utf-8' />
+        <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+        {{ js_resources|safe }}
+        {{ css_resources|safe }}
+        {{ script1|safe }}   
+        {{ script2|safe }}
+     </head>  
+
+     <br>
+     <br>
+     <br>
+     <h2 style="text-align: center;">Customer ID: {{cc_id}} </h2>
+     <br>
+     <br>
+     <br>
+     <h2 style =" margin-left: 100px; margin-top: 30px;">   Top 10 Transaction Latest </h2>
+<div style=" display: inline-block; margin-left: 500px;  ">
+    {{ datatable|safe }}
+</div>
+<br>
+
+<div style=" display: inline-block; margin-left: 200px; margin-top: 10px; ">
+    {{ div1 | safe }}
+  
+  </div>
+  
+  <div style=" display: inline-block; margin-left: 200px; margin-top: 10px; ">
+    {{ div2| safe }}
+  
+  </div>
+
+</html>
+{% endblock %}
+

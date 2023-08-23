@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %} Predict Transaction Fraud {% endblock %}
+
+{% block heading %}
+<center> Bank Page Transaction </center>
+    Managament:
+{% endblock %}
+
+{% block content %}
+{% if message %}
+    {{ message }}
+    <br>
+{% endif %}
+<p>
+   Predict Transaction Fraud
+</p>
+
+<table>
+    <tr>
+        <th>Customer ID</th>
+        <th>Time</th>
+        <th>Amt</th>
+        <th>Category</th>
+        <th>Merchant</th>
+        <th>Detail Information Customer</th>
+        <th></th>
+    </tr>
+
+    
+    {% for tran in transaction %}
+    <tr>
+        <td>{{ tran['cc_num']    }}</td>
+        <td>{{tran['trans_time'] }}</td>
+        <td>{{ tran['amt']       }}</td>
+        <td>{{ tran['category']  }}</td>
+        <td>{{ tran['merchant']  }}</td>
+      
+        
+        <td>
+            <a href="{{url_for('customer_details', cc_num = tran.cc_num )}}">Click</a>
+            
+        </td>
+        {% endfor %}
+     
+    
+
+    </tr>
+</table>
+
+
+{% endblock %}

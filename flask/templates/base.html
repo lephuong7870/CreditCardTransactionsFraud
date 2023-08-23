@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta charset="utf-8">
+        <title> {% block title %} {% endblock %} -- Bank Page -- </title>
+        <link rel="stylesheet" href="{{url_for('static' , filename='style.css')}}">
+
+    </head>
+
+    <body>
+        <div>
+            <ul style="list-style-type: none; float: right; font-size: large;">
+                <li style="display: inline"> <a href="{{url_for('homepage')}}">Home</a></li>
+         
+                
+                <li style="display: inline"><a href="{{url_for('dashboard_history')}}">Dashboard</a></li>
+                
+                <li style="display: inline"><a href="{{url_for('tracktransaction')}}">Transaction</a></li>
+                <li style="display: inline"><a href="{{url_for('predict')}}">Predict </a></li>
+                
+                <li style="display: inline"><a href="{{url_for('user')}}">Research User</a></li>
+
+               
+             
+              </ul>
+        </div>
+
+        <h1 id="title"> {% block heading %} {% endblock %}</h1>
+        <div id="content">
+            {% block content%}   {% endblock %}
+        </div>
+    </body> 
+</html>
+
+

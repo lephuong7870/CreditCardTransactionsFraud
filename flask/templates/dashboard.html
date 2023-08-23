@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+    {{ js_resources|safe }}
+    {{ css_resources|safe }}
+    {{ script1|safe }}   
+    {{ script2|safe }}
+    {{ script3|safe }}
+    {{ script4|safe }}
+    {{ script5|safe }}
+ </head>   
+
+<br>
+<h1 style = "text-align: center;">Bank Dashboard</h1>
+{% if message %}
+<br>
+    <h1 style="margin-left: 220px ;">{{ message }}  </h1>
+   
+{% endif %}
+<div style=" display: inline-block; margin-left: 100px; margin-top: 70px; ">
+  {{ div1 | safe }}
+
+</div>
+
+<div style=" display: inline-block; margin-left: 200px;  margin-top: 70px; ">
+  {{ div2 | safe }}
+
+</div>
+
+<div style=" display: inline-block; margin-left: 100px; margin-top: 70px; ">
+  {{ div3 | safe }}
+
+</div>
+<div style=" display: inline-block; margin-left: 100px; margin-top: 70px; ">
+  {{ div4| safe }}
+
+</div>
+<div style=" display: inline-block; margin-left: 100px; margin-top: 70px; ">
+  {{ div5| safe }}
+
+</div>
+<br>
+<br>
+</html>
+{% endblock %}
+
+
+

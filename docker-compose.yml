@@ -1,0 +1,108 @@
+version: "3"
+
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.22.0.0/24
+
+
+services:
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:5.4.0
+    container_name: zookeeper
+    ports:
+      - 2181:2181
+    networks:
+      - net
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+ 
+  kafka:
+    image: confluentinc/cp-kafka:5.4.0
+    container_name: kafka
+    ports:
+      - 9092:9092
+      - 9094:9094
+    networks:
+      - net
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_LISTENERS=INTERNAL://kafka:9092,OUTSIDE://kafka:9094
+      - KAFKA_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,OUTSIDE://localhost:9094
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_DELETE_TOPIC_ENABLE=true
+     
+    depends_on:
+      - zookeeper
+
+  spark-master:
+    image: bde2020/spark-master:3.0.1-hadoop3.2
+    container_name: spark-master
+    ports:
+      - 8080:8080
+      - 7077:7077
+    networks:
+      - net
+    volumes:
+      - ./batch:/batch
+      - ./stream:/stream
+
+  spark-worker:
+    image: bde2020/spark-worker:3.0.1-hadoop3.2
+    ports:
+      - 8081
+    networks:
+      - net
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+    depends_on:
+      - spark-master
+
+  cassandra:
+    image: datastax/dse-server:6.7.0
+    container_name: cassandra
+    ports:
+      - 9042:9042
+    networks:
+      - net
+    environment:
+      - DS_LICENSE=accept
+    volumes:
+      - ./init/cassandra-init.cql:/cassandra-init.cql
+   
+
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    ports:
+      - 9870:9870
+      - 9000:9000
+    networks:
+      - net
+    environment:
+      - CLUSTER_NAME=cluster_1
+    volumes:
+      - ./data:/data
+    env_file:
+      - ./init/hadoop.env
+
+  datanode:
+    image:  bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    ports:
+      - 9864:9864
+    networks:
+      - net
+    environment:
+      - SERVICE_PRECONDITION=namenode:9870
+    env_file:
+      - ./init/hadoop.env
+
+
+
