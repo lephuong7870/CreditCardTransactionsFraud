@@ -2,7 +2,7 @@
 
 # Tool using: Cassandra , Docker , Kafka, Pyspark, Flaks, Bokeh
 
-Lambda Architecture implementation using Kafka for stream ingestion, Spark for batch and stream processing, HDFS and Cassandra for storage and querying, Flask + Brokeh for live visualization, and Docker for deployment.
+Lambda Architecture implementation using Kafka for stream ingestion, Spark for batch and stream processing, HDFS and Cassandra for storage and querying, Flask + Bokeh for live visualization, and Docker for deployment.
 
 # Batch Processing
 ![image](https://github.com/lephuong7870/CreditCardTransactionsFraud/assets/92160581/6210d66c-04f1-41a7-b1c6-1b048864d4f8)
