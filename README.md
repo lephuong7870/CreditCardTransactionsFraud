@@ -1,6 +1,6 @@
 # CreditCardTransactionsFraud
 
-# Tool using: Cassandra , Docker , Kafka, Pyspark, Flaks, Bokeh
+# Tool using: Cassandra , Docker , Kafka, Pyspark, Flask, Bokeh
 
 Lambda Architecture implementation using Kafka for stream ingestion, Spark for batch and stream processing, HDFS and Cassandra for storage and querying, Flask + Bokeh for live visualization, and Docker for deployment.
 
