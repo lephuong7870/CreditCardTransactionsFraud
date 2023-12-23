@@ -28,7 +28,7 @@ python3 kafka_producer.py <br/>
 docker exec spark-master /spark/bin/spark-submit --packages "org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1,com.datastax.spark:spark-cassandra-connector_2.12:3.0.1,com.datastax.cassandra:cassandra-driver-core:4.0.0" stream/kafka_consumer.py
 
 ## Result 
-## Visualization: Flask + Brokeh
+## Visualization: Flask + Bokeh
 
 
 ![Untitled](https://github.com/lephuong7870/CreditCardTransactionsFraud/assets/92160581/9b68e6fb-2425-4a66-8523-678555ab33c9)
